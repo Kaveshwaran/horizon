@@ -1,16 +1,16 @@
 import Balancebox from "@/components/Balancebox";
 import Rightbar from "@/components/Rightbar";
 
-export default function page(user:user) {
+export default function page(user: user) {
   user={
     name:"Kaveshwaran D",
     nickname:"Kavesh",
     id : "asdvdfg34",
     mail : "dkaveshwaran@gmail.com",
-    accounts : ["Axis Bank","SBI"],
-    balance : [1200,5600],
-    totalbalance : 6800,
-    totalbanks: 2,
+    accounts : ["Axis Bank","SBI","KVB"],
+    balance : [1200,5600,3200],
+    totalbalance : 10000,
+    totalbanks: 3,
   }
   return (
     <div className="flex flex-grow flex-row min-h-screen w-fit">
