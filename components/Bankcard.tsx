@@ -2,7 +2,7 @@ import React from 'react'
 import { PiContactlessPaymentLight } from "react-icons/pi";
 import { SiVisa } from "react-icons/si";
 
-const Bankcard = (user:user) => {
+const Bankcard = ({user,userdata}:{user:user,userdata:userData}) => {
   return (
     <div className='w-full'>
         <div className='absolute w-[360px] h-[200px] mt-10 ml-10 rounded-xl bg-blue-400 flex flex-row'>
@@ -10,7 +10,7 @@ const Bankcard = (user:user) => {
                 <p className='font-bold text-lg text-white'>{user.accounts[0]}</p>
                 <div className='text-white font-bold'>
                     <div className='flex flex-row justify-between pb-1'>
-                        <p>{user.name}</p>
+                        <p>{userdata.name}</p>
                         <p>06/26</p>
                     </div>
                     <p className='text-xl'>1234  1234  1234  1234</p>
@@ -27,7 +27,7 @@ const Bankcard = (user:user) => {
                 <p className='font-bold text-lg text-white'>{user.accounts[0]}</p>
                 <div className='text-white font-bold'>
                     <div className='flex flex-row justify-between pb-1'>
-                        <p>{user.name}</p>
+                        <p>{userdata.name}</p>
                         <p>06/26</p>
                     </div>
                     <p className='text-xl'>1234  1234  1234  1234</p>

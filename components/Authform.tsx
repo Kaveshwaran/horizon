@@ -15,13 +15,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { formSchema } from "@/lib/utils";
+import { formSchema} from "@/lib/utils";
 import CustomInput from "./CustomInput";
 import { TbLoader2 } from "react-icons/tb";
 import Link from "next/link";
 import { FaLeaf } from "react-icons/fa6";
 import { useRouter } from "next/navigation";
-import { signIn, signUp } from "@/lib/actions/user.actions";
+import { getLoggedInUser, signIn, signUp } from "@/lib/actions/user.actions";
 
 const Authform = ({ type }: { type: "signin" | "signup" }) => {
   const [user, setuser] = useState(null);
@@ -49,8 +49,13 @@ const Authform = ({ type }: { type: "signin" | "signup" }) => {
     try {
       //sign up with Appwrite & create account with plaid token
       if (type === "signin") {
-        const user = await signIn({ mail: data.mail, password: data.password });
-        if (user) router.push("/");
+        const usersignin = await signIn({ mail: data.mail, password: data.password });
+        if(usersignin){
+          const currentuser = await getLoggedInUser();
+          console.log(currentuser.name);
+          setuser(currentuser);
+          router.push("/");
+        } 
       }
       if (type === "signup") {
         const newUser = await signUp(data);

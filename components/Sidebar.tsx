@@ -8,6 +8,8 @@ import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { RiBankCardLine } from "react-icons/ri";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Footer from "./Footer";
+import { getLoggedInUser } from "@/lib/actions/user.actions";
 
 const navItems = [
   { name: "Home", path: "/", icon: <HiHome /> },
@@ -21,7 +23,7 @@ const navItems = [
   { name: "Connect Bank", path: "/connect", icon: <RiBankCardLine /> },
 ];
 
-const Sidebar = () => {
+const Sidebar = ({userdata}:{userdata:userData}) => {
   const pathname = usePathname();
   return (
     <div className="w-[270px] bg-slate-500 flex flex-col p-4 min-h-screen justify-between">
@@ -52,7 +54,7 @@ const Sidebar = () => {
         ))}
         </div>
       </div>
-      <div className="pb-2">Footer</div>
+      <div><Footer userdata={userdata}/></div>
     </div>
   );
 };

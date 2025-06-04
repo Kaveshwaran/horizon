@@ -1,7 +1,11 @@
+"use client"
 import Balancebox from "@/components/Balancebox";
 import Rightbar from "@/components/Rightbar";
+import { getLoggedInUser } from "@/lib/actions/user.actions";
 
-export default function page(user: user) {
+
+
+const page = async(user: user) =>{
   user={
     name:"Kaveshwaran D",
     nickname:"Kavesh",
@@ -12,12 +16,14 @@ export default function page(user: user) {
     totalbalance : 10000,
     totalbanks: 3,
   }
+  const userdata = await getLoggedInUser();
+
   return (
     <div className="flex flex-grow flex-row min-h-screen w-fit">
       <div className="bg-neutral-200 w-[1100px] p-10">
         <div className="flex flex-row">
           <h1 className="text-black font-bold text-4xl ">Hello, </h1>
-          <h1 className="text-cyan-600 font-bold text-4xl pl-3 ">{user.nickname}</h1>
+          <h1 className="text-cyan-600 font-bold text-4xl pl-3 ">{userdata.name}</h1>
         </div>
         <h1 className="text-xl text-neutral-600 pt-2">
           Access and manage your account and transaction efficiently.
@@ -27,7 +33,9 @@ export default function page(user: user) {
           Recent Transations
         </div>
       </div>
-      {Rightbar(user)}
+      {Rightbar({user,userdata})}
     </div>
   );
 }
+
+export default page;

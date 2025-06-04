@@ -38,3 +38,14 @@ declare type signInParams = {
     mail: string;
     password: string;
 }
+
+declare type userData = {
+    name:string;
+    email:string;
+}
+
+declare type userState ={
+    user:userData | null;
+    setUser:(user:user) => void;
+    delUser:()=>void;
+}
